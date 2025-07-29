@@ -59,7 +59,7 @@ public class PassCodeHandler : MonoBehaviour
                 }
                 else if (year >= 1970 && year <= 1980)
                 {
-                    Debug.Log("Between 1970 and 1980");
+                    boxCapOpener.RecordP();
                     // Do something
                 }
                 else if (year >= 1980 && year <= 1989)

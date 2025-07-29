@@ -3,7 +3,7 @@ using UnityEngine;
 public class BoxCapOpener : MonoBehaviour
 {
     public Animator animator;
-    public GameObject tv, GameBoy, computer, Phone;
+    public GameObject RecordPlayer, tv, GameBoy, computer, Phone;
     void Update()
     {
 
@@ -12,6 +12,12 @@ public class BoxCapOpener : MonoBehaviour
     public void OpenCap()
     {
         //animator.SetTrigger("Open");
+    }
+    public void RecordP()
+    {
+        RecordPlayer.SetActive(true);
+        //2010-2019
+        animator.SetTrigger("RecordPlayer");
     }
     public void TV()
     {
