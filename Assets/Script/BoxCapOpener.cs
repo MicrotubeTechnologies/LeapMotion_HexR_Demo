@@ -8,7 +8,14 @@ public class BoxCapOpener : MonoBehaviour
     {
 
     }
-
+    public void TurnAllObjectOFF()
+    {
+        RecordPlayer.SetActive(false);
+        tv.SetActive(false);
+        computer.SetActive(false);
+        GameBoy.SetActive(false);
+        Phone.SetActive(false);
+    }
     public void OpenCap()
     {
         //animator.SetTrigger("Open");

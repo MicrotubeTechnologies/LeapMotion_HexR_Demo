@@ -52,6 +52,7 @@ public class PassCodeHandler : MonoBehaviour
 
             if (int.TryParse(Password, out int year))
             {
+                boxCapOpener.TurnAllObjectOFF();
                 if (year <= 1969)
                 {
                     Debug.Log("Special year: 1969");

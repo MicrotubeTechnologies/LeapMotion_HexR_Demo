@@ -7,6 +7,7 @@ public class SparrowController : MonoBehaviour
 {
     public Animator animator;
     public PressureTrackerMain RighPTM, LeftPTM;
+    public AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class SparrowController : MonoBehaviour
         if(other.name.Contains("Palm") && other.name.Contains("R_"))
         {
             Bounce();
+            AudioSource.Play();
         }
     }
     private void OnTriggerStay(Collider other)
@@ -39,6 +41,7 @@ public class SparrowController : MonoBehaviour
         {
             Idle();
             RighPTM.RemoveAllVibrations();
+            AudioSource.Stop();
         }
     }
     public void Bounce()
