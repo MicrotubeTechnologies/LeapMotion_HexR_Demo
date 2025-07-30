@@ -1,3 +1,4 @@
+using HexR;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class RainCoin : MonoBehaviour
             WaterParticle1.Play();
             WaterParticle2.Play();
         }
-        if(WaterParticle1.gameObject.activeInHierarchy)
+        if(WaterParticle1.gameObject.activeInHierarchy && other.gameObject.TryGetComponent(out HapticFingerTrigger hapticFingerTrigger))
         {
             CoinParticle.gameObject.SetActive(true);
             CoinParticle.Play();
