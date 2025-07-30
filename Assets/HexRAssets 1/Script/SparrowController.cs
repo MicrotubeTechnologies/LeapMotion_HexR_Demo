@@ -53,4 +53,6 @@ public class SparrowController : MonoBehaviour
     {
         animator.SetTrigger("Idle");
     }
+
+
 }
