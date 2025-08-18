@@ -7,6 +7,7 @@ public class SparrowFeet : MonoBehaviour
 {
     public Animator animator;
     public AudioSource AudioSource;
+    private bool FlyBool = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,12 @@ public class SparrowFeet : MonoBehaviour
     {
         
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.name.Contains("Table") )
+        if (other.name.Contains("Table") && FlyBool)
         {
             idle();
+            FlyBool = false;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -30,6 +32,7 @@ public class SparrowFeet : MonoBehaviour
         if (other.name.Contains("Table"))
         {
             Fly();
+            FlyBool = true;
         }
     }
     public void idle()
