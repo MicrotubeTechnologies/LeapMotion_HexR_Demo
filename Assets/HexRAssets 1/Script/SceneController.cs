@@ -6,6 +6,7 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
    public GameObject SceneOne, SceneTwo, SceneThree, SceneFour;
+    public RainCoin rainCoin;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,9 @@ public class SceneController : MonoBehaviour
             SceneOne.SetActive(false);
             SceneTwo.SetActive(true);
         }
-        else if (SceneTwo.activeInHierarchy)
+        else if (SceneTwo.activeInHierarchy) // Fountain
         {
+            rainCoin.ResetFountain();
             SceneTwo.SetActive(false);
             SceneThree.SetActive(true);
         }

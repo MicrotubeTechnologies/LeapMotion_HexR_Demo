@@ -1,0 +1,1007 @@
+fileFormatVersion: 2
+guid: f30fe54dc4a174680892216b55e562df
+timeCreated: 1507245935
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Aort_bone_star
+    100002: Aort_bone_star_1
+    100004: Aort_bone_star_2
+    100006: Aorta_B1
+    100008: Aorta_final___
+    100010: apex
+    100012: apex_back
+    100014: bone_star
+    100016: bone_star_1
+    100018: bone_star_2
+    100020: bone_star_2_2
+    100022: bone_star_3
+    100024: bone_star_ii_tt
+    100026: Joint_1
+    100028: Joint_1_10
+    100030: Joint_1_11
+    100032: Joint_1_12
+    100034: Joint_1_13
+    100036: Joint_1_14
+    100038: Joint_1_15
+    100040: Joint_1_16
+    100042: Joint_1_17
+    100044: Joint_1_18
+    100046: Joint_1_19
+    100048: Joint_1_2
+    100050: Joint_1_20
+    100052: Joint_1_21
+    100054: Joint_1_22
+    100056: Joint_1_23
+    100058: Joint_1_24
+    100060: Joint_1_25
+    100062: Joint_1_26
+    100064: Joint_1_27
+    100066: Joint_1_28
+    100068: Joint_1_29
+    100070: Joint_1_3
+    100072: Joint_1_30
+    100074: Joint_1_31
+    100076: Joint_1_32
+    100078: Joint_1_33
+    100080: Joint_1_34
+    100082: Joint_1_35
+    100084: Joint_1_36
+    100086: Joint_1_37
+    100088: Joint_1_38
+    100090: Joint_1_39
+    100092: Joint_1_4
+    100094: Joint_1_40
+    100096: Joint_1_41
+    100098: Joint_1_42
+    100100: Joint_1_43
+    100102: Joint_1_44
+    100104: Joint_1_45
+    100106: Joint_1_46
+    100108: Joint_1_47
+    100110: Joint_1_48
+    100112: Joint_1_49
+    100114: Joint_1_5
+    100116: Joint_1_50
+    100118: Joint_1_51
+    100120: Joint_1_52
+    100122: Joint_1_53
+    100124: Joint_1_54
+    100126: Joint_1_55
+    100128: Joint_1_56
+    100130: Joint_1_57
+    100132: Joint_1_58
+    100134: Joint_1_59
+    100136: Joint_1_6
+    100138: Joint_1_60
+    100140: Joint_1_61
+    100142: Joint_1_62
+    100144: Joint_1_63
+    100146: Joint_1_7
+    100148: Joint_1_8
+    100150: Joint_1_9
+    100152: left_atrium
+    100154: left_atrium_B1
+    100156: left_atrium_B1_1
+    100158: left_atrium_B1_2
+    100160: left_atrium_Bs
+    100162: left_p__ARTERY
+    100164: Left_P__Vvs
+    100166: Left_P__Vvs3
+    100168: Left_P__Vvs_1
+    100170: Left_P__Vvs_2
+    100172: Left_P__Vvs_4
+    100174: Left_P_artery_1
+    100176: Left_P_artery_2
+    100178: Left_P_artery_3
+    100180: Left_P_artery_4
+    100182: Left_Ven__B1
+    100184: Left_Ven__B2
+    100186: pulmonary_B1
+    100188: pulmonary_B2
+    100190: //RootNode
+    100192: Right_Atrium_B1
+    100194: Right_Atrium_B2
+    100196: Right_Atrium_B3
+    100198: right_atrium_G
+    100200: Right_Ven__B1
+    100202: RigthPulmoV_1B
+    100204: RigthPulmoV_1B_10
+    100206: RigthPulmoV_1B_2
+    100208: RigthPulmoV_1B_3
+    100210: RigthPulmoV_1B_4
+    100212: RigthPulmoV_1B_5
+    100214: RigthPulmoV_1B_6
+    100216: RigthPulmoV_1B_7
+    100218: RigthPulmoV_1B_8
+    100220: RigthPulmoV_1B_9
+    100222: RigthPulmoV_1C
+    100224: RigthPulmoV_1C_10
+    100226: RigthPulmoV_1C_2
+    100228: RigthPulmoV_1C_3
+    100230: RigthPulmoV_1C_4
+    100232: RigthPulmoV_1C_5
+    100234: RigthPulmoV_1C_6
+    100236: RigthPulmoV_1C_7
+    100238: RigthPulmoV_1C_8
+    100240: RigthPulmoV_1C_9
+    100242: RigthPulmoV_1D
+    100244: RigthPulmoV_1D_10
+    100246: RigthPulmoV_1D_2
+    100248: RigthPulmoV_1D_3
+    100250: RigthPulmoV_1D_4
+    100252: RigthPulmoV_1D_5
+    100254: RigthPulmoV_1D_6
+    100256: RigthPulmoV_1D_7
+    100258: RigthPulmoV_1D_8
+    100260: RigthPulmoV_1D_9
+    100262: RigthPulmoV_1E
+    100264: RigthPulmoV_1E_10
+    100266: RigthPulmoV_1E_2
+    100268: RigthPulmoV_1E_3
+    100270: RigthPulmoV_1E_4
+    100272: RigthPulmoV_1E_5
+    100274: RigthPulmoV_1E_6
+    100276: RigthPulmoV_1E_7
+    100278: RigthPulmoV_1E_8
+    100280: RigthPulmoV_1E_9
+    100282: Root
+    100284: Skin
+    100286: veins_bones_all
+    100288: ventricles_front_G
+    400000: Aort_bone_star
+    400002: Aort_bone_star_1
+    400004: Aort_bone_star_2
+    400006: Aorta_B1
+    400008: Aorta_final___
+    400010: apex
+    400012: apex_back
+    400014: bone_star
+    400016: bone_star_1
+    400018: bone_star_2
+    400020: bone_star_2_2
+    400022: bone_star_3
+    400024: bone_star_ii_tt
+    400026: Joint_1
+    400028: Joint_1_10
+    400030: Joint_1_11
+    400032: Joint_1_12
+    400034: Joint_1_13
+    400036: Joint_1_14
+    400038: Joint_1_15
+    400040: Joint_1_16
+    400042: Joint_1_17
+    400044: Joint_1_18
+    400046: Joint_1_19
+    400048: Joint_1_2
+    400050: Joint_1_20
+    400052: Joint_1_21
+    400054: Joint_1_22
+    400056: Joint_1_23
+    400058: Joint_1_24
+    400060: Joint_1_25
+    400062: Joint_1_26
+    400064: Joint_1_27
+    400066: Joint_1_28
+    400068: Joint_1_29
+    400070: Joint_1_3
+    400072: Joint_1_30
+    400074: Joint_1_31
+    400076: Joint_1_32
+    400078: Joint_1_33
+    400080: Joint_1_34
+    400082: Joint_1_35
+    400084: Joint_1_36
+    400086: Joint_1_37
+    400088: Joint_1_38
+    400090: Joint_1_39
+    400092: Joint_1_4
+    400094: Joint_1_40
+    400096: Joint_1_41
+    400098: Joint_1_42
+    400100: Joint_1_43
+    400102: Joint_1_44
+    400104: Joint_1_45
+    400106: Joint_1_46
+    400108: Joint_1_47
+    400110: Joint_1_48
+    400112: Joint_1_49
+    400114: Joint_1_5
+    400116: Joint_1_50
+    400118: Joint_1_51
+    400120: Joint_1_52
+    400122: Joint_1_53
+    400124: Joint_1_54
+    400126: Joint_1_55
+    400128: Joint_1_56
+    400130: Joint_1_57
+    400132: Joint_1_58
+    400134: Joint_1_59
+    400136: Joint_1_6
+    400138: Joint_1_60
+    400140: Joint_1_61
+    400142: Joint_1_62
+    400144: Joint_1_63
+    400146: Joint_1_7
+    400148: Joint_1_8
+    400150: Joint_1_9
+    400152: left_atrium
+    400154: left_atrium_B1
+    400156: left_atrium_B1_1
+    400158: left_atrium_B1_2
+    400160: left_atrium_Bs
+    400162: left_p__ARTERY
+    400164: Left_P__Vvs
+    400166: Left_P__Vvs3
+    400168: Left_P__Vvs_1
+    400170: Left_P__Vvs_2
+    400172: Left_P__Vvs_4
+    400174: Left_P_artery_1
+    400176: Left_P_artery_2
+    400178: Left_P_artery_3
+    400180: Left_P_artery_4
+    400182: Left_Ven__B1
+    400184: Left_Ven__B2
+    400186: pulmonary_B1
+    400188: pulmonary_B2
+    400190: //RootNode
+    400192: Right_Atrium_B1
+    400194: Right_Atrium_B2
+    400196: Right_Atrium_B3
+    400198: right_atrium_G
+    400200: Right_Ven__B1
+    400202: RigthPulmoV_1B
+    400204: RigthPulmoV_1B_10
+    400206: RigthPulmoV_1B_2
+    400208: RigthPulmoV_1B_3
+    400210: RigthPulmoV_1B_4
+    400212: RigthPulmoV_1B_5
+    400214: RigthPulmoV_1B_6
+    400216: RigthPulmoV_1B_7
+    400218: RigthPulmoV_1B_8
+    400220: RigthPulmoV_1B_9
+    400222: RigthPulmoV_1C
+    400224: RigthPulmoV_1C_10
+    400226: RigthPulmoV_1C_2
+    400228: RigthPulmoV_1C_3
+    400230: RigthPulmoV_1C_4
+    400232: RigthPulmoV_1C_5
+    400234: RigthPulmoV_1C_6
+    400236: RigthPulmoV_1C_7
+    400238: RigthPulmoV_1C_8
+    400240: RigthPulmoV_1C_9
+    400242: RigthPulmoV_1D
+    400244: RigthPulmoV_1D_10
+    400246: RigthPulmoV_1D_2
+    400248: RigthPulmoV_1D_3
+    400250: RigthPulmoV_1D_4
+    400252: RigthPulmoV_1D_5
+    400254: RigthPulmoV_1D_6
+    400256: RigthPulmoV_1D_7
+    400258: RigthPulmoV_1D_8
+    400260: RigthPulmoV_1D_9
+    400262: RigthPulmoV_1E
+    400264: RigthPulmoV_1E_10
+    400266: RigthPulmoV_1E_2
+    400268: RigthPulmoV_1E_3
+    400270: RigthPulmoV_1E_4
+    400272: RigthPulmoV_1E_5
+    400274: RigthPulmoV_1E_6
+    400276: RigthPulmoV_1E_7
+    400278: RigthPulmoV_1E_8
+    400280: RigthPulmoV_1E_9
+    400282: Root
+    400284: Skin
+    400286: veins_bones_all
+    400288: ventricles_front_G
+    4300000: HEART_PRO
+    7400000: fast
+    7400002: slow
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: fast
+      takeName: C4D Animation Take
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/apex
+        weight: 1
+      - path: Root/apex/Joint_1_2
+        weight: 1
+      - path: Root/apex_back
+        weight: 1
+      - path: Root/apex_back/Joint_1
+        weight: 1
+      - path: Root/left_atrium
+        weight: 1
+      - path: Root/left_atrium/Joint_1_55
+        weight: 1
+      - path: Root/left_atrium_Bs
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1/Joint_1_53
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_1
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_1/Joint_1_52
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_2
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_2/Joint_1_54
+        weight: 1
+      - path: Root/right_atrium_G
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B1
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B1/Joint_1_63
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B2
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B2/Joint_1_61
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B3
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B3/Joint_1_62
+        weight: 1
+      - path: Root/veins_bones_all
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1B_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1B_2/Joint_1_11
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1C_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1C_2/Joint_1_10
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1D_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1D_2/Joint_1_9
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1E_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1E_2/Joint_1_8
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1B_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1B_3/Joint_1_15
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1C_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1C_3/Joint_1_14
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1D_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1D_3/Joint_1_13
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1E_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1E_3/Joint_1_12
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1B
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1B/Joint_1_7
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1C
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1C/Joint_1_6
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1D
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1D/Joint_1_5
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1E
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1E/Joint_1_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1B_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1B_4/Joint_1_19
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1C_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1C_4/Joint_1_18
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1D_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1D_4/Joint_1_17
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1E_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1E_4/Joint_1_16
+        weight: 1
+      - path: Root/veins_bones_all/bone_star
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1B_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1B_6/Joint_1_35
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1C_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1C_6/Joint_1_34
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1D_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1D_6/Joint_1_33
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1E_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1E_6/Joint_1_32
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1B_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1B_10/Joint_1_51
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1C_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1C_10/Joint_1_50
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1D_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1D_10/Joint_1_49
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1E_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1E_10/Joint_1_48
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1B_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1B_5/Joint_1_23
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1C_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1C_5/Joint_1_22
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1D_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1D_5/Joint_1_21
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1E_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1E_5/Joint_1_20
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1B_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1B_7/Joint_1_39
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1C_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1C_7/Joint_1_38
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1D_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1D_7/Joint_1_37
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1E_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1E_7/Joint_1_36
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1B_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1B_8/Joint_1_43
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1C_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1C_8/Joint_1_42
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1D_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1D_8/Joint_1_41
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1E_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1E_8/Joint_1_40
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1B_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1B_9/Joint_1_47
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1C_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1C_9/Joint_1_46
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1D_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1D_9/Joint_1_45
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1E_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1E_9/Joint_1_44
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_1
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_1/Joint_1_24
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_2
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_2/Joint_1_25
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_3
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_3/Joint_1_26
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_4
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_4/Joint_1_27
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs3
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs3/Joint_1_30
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_1
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_1/Joint_1_28
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_2
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_2/Joint_1_29
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_4
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_4/Joint_1_31
+        weight: 1
+      - path: Root/ventricles_front_G
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B1
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B1/Joint_1_58
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B2
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B2/Joint_1_59
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B1
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B1/Joint_1_57
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B2
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B2/Joint_1_56
+        weight: 1
+      - path: Root/ventricles_front_G/Right_Ven__B1
+        weight: 1
+      - path: Root/ventricles_front_G/Right_Ven__B1/Joint_1_60
+        weight: 1
+      - path: Skin
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: slow
+      takeName: C4D Animation Take
+      firstFrame: 25
+      lastFrame: 70
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/apex
+        weight: 1
+      - path: Root/apex/Joint_1_2
+        weight: 1
+      - path: Root/apex_back
+        weight: 1
+      - path: Root/apex_back/Joint_1
+        weight: 1
+      - path: Root/left_atrium
+        weight: 1
+      - path: Root/left_atrium/Joint_1_55
+        weight: 1
+      - path: Root/left_atrium_Bs
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1/Joint_1_53
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_1
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_1/Joint_1_52
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_2
+        weight: 1
+      - path: Root/left_atrium_Bs/left_atrium_B1_2/Joint_1_54
+        weight: 1
+      - path: Root/right_atrium_G
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B1
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B1/Joint_1_63
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B2
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B2/Joint_1_61
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B3
+        weight: 1
+      - path: Root/right_atrium_G/Right_Atrium_B3/Joint_1_62
+        weight: 1
+      - path: Root/veins_bones_all
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1B_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1B_2/Joint_1_11
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1C_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1C_2/Joint_1_10
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1D_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1D_2/Joint_1_9
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1E_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star/RigthPulmoV_1E_2/Joint_1_8
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1B_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1B_3/Joint_1_15
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1C_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1C_3/Joint_1_14
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1D_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1D_3/Joint_1_13
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1E_3
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_1/RigthPulmoV_1E_3/Joint_1_12
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1B
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1B/Joint_1_7
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1C
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1C/Joint_1_6
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1D
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1D/Joint_1_5
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1E
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aort_bone_star_2/RigthPulmoV_1E/Joint_1_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1B_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1B_4/Joint_1_19
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1C_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1C_4/Joint_1_18
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1D_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1D_4/Joint_1_17
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1E_4
+        weight: 1
+      - path: Root/veins_bones_all/Aorta_B1/Joint_1_3/Aorta_final___/RigthPulmoV_1E_4/Joint_1_16
+        weight: 1
+      - path: Root/veins_bones_all/bone_star
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1B_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1B_6/Joint_1_35
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1C_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1C_6/Joint_1_34
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1D_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1D_6/Joint_1_33
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1E_6
+        weight: 1
+      - path: Root/veins_bones_all/bone_star/RigthPulmoV_1E_6/Joint_1_32
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1B_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1B_10/Joint_1_51
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1C_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1C_10/Joint_1_50
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1D_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1D_10/Joint_1_49
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1E_10
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_1/RigthPulmoV_1E_10/Joint_1_48
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1B_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1B_5/Joint_1_23
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1C_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1C_5/Joint_1_22
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1D_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1D_5/Joint_1_21
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1E_5
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2/RigthPulmoV_1E_5/Joint_1_20
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1B_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1B_7/Joint_1_39
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1C_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1C_7/Joint_1_38
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1D_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1D_7/Joint_1_37
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1E_7
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_2_2/RigthPulmoV_1E_7/Joint_1_36
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1B_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1B_8/Joint_1_43
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1C_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1C_8/Joint_1_42
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1D_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1D_8/Joint_1_41
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1E_8
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_3/RigthPulmoV_1E_8/Joint_1_40
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1B_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1B_9/Joint_1_47
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1C_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1C_9/Joint_1_46
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1D_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1D_9/Joint_1_45
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1E_9
+        weight: 1
+      - path: Root/veins_bones_all/bone_star_ii_tt/RigthPulmoV_1E_9/Joint_1_44
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_1
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_1/Joint_1_24
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_2
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_2/Joint_1_25
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_3
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_3/Joint_1_26
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_4
+        weight: 1
+      - path: Root/veins_bones_all/left_p__ARTERY/Left_P_artery_4/Joint_1_27
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs3
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs3/Joint_1_30
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_1
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_1/Joint_1_28
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_2
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_2/Joint_1_29
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_4
+        weight: 1
+      - path: Root/veins_bones_all/Left_P__Vvs/Left_P__Vvs_4/Joint_1_31
+        weight: 1
+      - path: Root/ventricles_front_G
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B1
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B1/Joint_1_58
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B2
+        weight: 1
+      - path: Root/ventricles_front_G/Left_Ven__B2/Joint_1_59
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B1
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B1/Joint_1_57
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B2
+        weight: 1
+      - path: Root/ventricles_front_G/pulmonary_B2/Joint_1_56
+        weight: 1
+      - path: Root/ventricles_front_G/Right_Ven__B1
+        weight: 1
+      - path: Root/ventricles_front_G/Right_Ven__B1/Joint_1_60
+        weight: 1
+      - path: Skin
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
