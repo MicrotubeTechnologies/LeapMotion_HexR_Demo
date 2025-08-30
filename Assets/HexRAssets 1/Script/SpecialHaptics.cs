@@ -478,10 +478,12 @@ namespace HexR
             }
             else
             {
-                yield return new WaitForSeconds(Random.Range(0.2f, 0.4f));
+                HeartBeatPressure = Random.Range(0.1f, 0.8f);
+                yield return new WaitForSeconds(Random.Range(0.1f, 0.7f));
             }
             StartCoroutine(HeartBeatOut());
         }
+
         IEnumerator HeartBeatOut()
         {
             PressureIn = false;
@@ -562,6 +564,14 @@ namespace HexR
             {
                 heartbeat = HeartBeat.Irregular;
             }
+        }
+        public void NormalHeart()
+        {
+            heartbeat = HeartBeat.Regular;
+        }
+        public void IrregularHeart()
+        {
+            heartbeat = HeartBeat.Irregular;
         }
 
         #endregion

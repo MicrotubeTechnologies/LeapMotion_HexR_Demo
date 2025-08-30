@@ -69,8 +69,6 @@ public class SubtitleHelper : MonoBehaviour
         }
 
         // Clear text at the end
-        subtitleText.text = "";
-        SetAlpha(0f);
         isPlaying = false;
     }
 
@@ -142,6 +140,15 @@ public class SubtitleHelper : MonoBehaviour
         if (line.Length > 0) result.Add(line.Trim());
         return string.Join("\n", result);
     }
+
+    public void ClearSubtitles()
+{
+    StopAllCoroutines(); // stop any running subtitle coroutines
+    subtitleText.text = "";
+    SetAlpha(0f);
+    isPlaying = false;
+    subtitleQueue.Clear();
+}
 }
 
 

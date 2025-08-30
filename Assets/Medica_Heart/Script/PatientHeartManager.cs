@@ -8,10 +8,12 @@ public class PatientHeartManager : MonoBehaviour
 {
     public TextMeshProUGUI HeartTypeText; // Description text of the type of heart
     public List<GameObject> lifestyleChoice = new List<GameObject>();
-    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2;
+    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2;
     public AudioSource audioSource;
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
     public Custom_Heart custom_Heart;
+    public Material NormalMat, IschemicMat;  // Assign in Inspector
+    public Renderer Heart_Renderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class PatientHeartManager : MonoBehaviour
     public void NormalHeartStart()
     {
         HideLifestyleChoices();
+        Heart_Renderer.material = NormalMat;
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -99,8 +102,6 @@ public class PatientHeartManager : MonoBehaviour
 
     public void HypertensiveTrigger2()
     {
-        //enlarged, floppy heart, weak pulsation.
-        HeartType("Hypertensive Heart");
         float Delay = 6f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -119,12 +120,55 @@ public class PatientHeartManager : MonoBehaviour
     }
     #endregion
 
-
-    public void IschemicTrigger()
+    #region Ischemic
+    public void IschemicTrigger1()
     {
         //weak beats, slight discoloration.
         HeartType("Ischemic Heart");
+        Heart_Renderer.material = IschemicMat;
+        foreach (GameObject child in lifestyleChoice)
+        {
+            if (child.name != "Cigrattes")
+            {
+                child.SetActive(false);
+            }
+        }
+        float Delay = 4f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "Take a look at how the heart has changed after prolonged smoking.  ", startTime = Delay },
+            new SubtitleLine { text = "Notice the uneven areas, some parts are dimmer than others.", startTime = Delay + 3.5f },
+            new SubtitleLine { text = "This represents damage from restricted blood flow.", startTime = Delay + 6.5f },
+            new SubtitleLine { text = "This is called an ischemic heart. Smoking damages blood vessels,", startTime = Delay + 11f},
+            new SubtitleLine { text = "promotes plaque build-up, and limits oxygen supply to the heart muscle.", startTime = Delay + 14.5f },
+            new SubtitleLine { text = "Over time, some areas may weaken or even die off, leaving scars. ", startTime = Delay + 18f },
+            new SubtitleLine { text = "Go ahead, reach out and touch the ischemic heart to feel the difference yourself", startTime = Delay + 22f }
+        };
+        audioSource.clip = IschemicAudio1;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+        custom_Heart.CurrentStepChanger(3f);
+        StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
+    public void IschemicTrigger2()
+    {
+        float Delay = 5.5f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "Do you feel that? The heartbeat is uneven, unpredictable, and weaker in some areas. ", startTime = Delay },
+            new SubtitleLine { text = "That’s the hallmark of an ischemic heart. Ischemic hearts are at risk of chest pain, ", startTime = Delay + 6f },
+            new SubtitleLine { text = "heart attacks, and even heart failure if blood flow is not restored.  ", startTime = Delay +9f },
+            new SubtitleLine { text = "The good news is that quitting smoking, eating healthy, and exercising can help prevent further damage and improve heart function. ", startTime = Delay + 17.5f},
+            new SubtitleLine { text = "Now let's try another lifestyle choice, shall we?	", startTime = Delay + 18f }
+
+        };
+        audioSource.clip = IschemicAudio2;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+        StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
+    }
+
+    #endregion
     public void DilatedTrigger()
     {
         //weak beats, slight discoloration.
@@ -150,6 +194,8 @@ public class PatientHeartManager : MonoBehaviour
     }
     private void ShowLifestylechoices()
     {
+
+        Heart_Renderer.material = NormalMat;
         foreach (GameObject child in lifestyleChoice)
         {
             child.SetActive(true);

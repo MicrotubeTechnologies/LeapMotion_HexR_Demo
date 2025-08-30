@@ -6,7 +6,7 @@ public class Custom_Heart : MonoBehaviour
 {
     // 1 = Normal Heart
     // 2 = Hypertensive Heart
-    // 3 = 
+    // 3 = Ischemic Heart
     private float CurrentStep = 1;
     public AudioSource audiosource;
     public PatientHeartManager patientHeartManager;
@@ -33,6 +33,11 @@ public class Custom_Heart : MonoBehaviour
             else if(CurrentStep == 2)
             {
                 patientHeartManager.HypertensiveTrigger2();
+                CurrentStep = 0;
+            }
+            else if (CurrentStep == 3)
+            {
+                patientHeartManager.IschemicTrigger2();
                 CurrentStep = 0;
             }
         }
