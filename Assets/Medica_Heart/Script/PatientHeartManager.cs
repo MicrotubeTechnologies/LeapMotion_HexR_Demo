@@ -14,6 +14,7 @@ public class PatientHeartManager : MonoBehaviour
     public Custom_Heart custom_Heart;
     public Material NormalMat, IschemicMat;  // Assign in Inspector
     public Renderer Heart_Renderer;
+    public GameObject HypertensiveHeartModel, NormalHeatModel;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +80,8 @@ public class PatientHeartManager : MonoBehaviour
                 child.SetActive(false);
             }
         }
-
+        HypertensiveHeartModel.SetActive(true);
+        NormalHeatModel.SetActive(false);
         //enlarged, floppy heart, weak pulsation.
         HeartType("Hypertensive Heart");
         float Delay = 4f;
@@ -194,7 +196,8 @@ public class PatientHeartManager : MonoBehaviour
     }
     private void ShowLifestylechoices()
     {
-
+        HypertensiveHeartModel.SetActive(false);
+        NormalHeatModel.SetActive(true);
         Heart_Renderer.material = NormalMat;
         foreach (GameObject child in lifestyleChoice)
         {

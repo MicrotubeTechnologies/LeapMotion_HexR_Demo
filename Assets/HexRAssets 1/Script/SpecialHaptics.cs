@@ -478,8 +478,8 @@ namespace HexR
             }
             else
             {
-                HeartBeatPressure = Random.Range(0.1f, 0.8f);
-                yield return new WaitForSeconds(Random.Range(0.1f, 0.7f));
+                HeartBeatPressure = Random.Range(0.1f, 0.9f);
+                yield return new WaitForSeconds(Random.Range(0.2f, 1.4f));
             }
             StartCoroutine(HeartBeatOut());
         }
@@ -499,7 +499,7 @@ namespace HexR
             }
             else
             {
-                yield return new WaitForSeconds(Random.Range(0.4f, 0.7f));
+                yield return new WaitForSeconds(Random.Range(0.2f, 1.4f));
             }
             StartCoroutine(HeartBeatIn());
         }

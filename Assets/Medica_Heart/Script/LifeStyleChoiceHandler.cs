@@ -26,19 +26,19 @@ public class LifeStyleChoiceHandler : MonoBehaviour
         {
             patientHeartManager.HypertensiveTrigger1();
             specialHaptics.HapticPressure = 0.8f;
-            specialHaptics.InTimer = 0.6f;
-            specialHaptics.OutTimer = 0.6f;
+            specialHaptics.InTimer = 1.2f;
+            specialHaptics.OutTimer = 1f;
         }
-        else if(LifeStyleChoice == Options.Ciggrate)
+        else if(LifeStyleChoice == Options.Ciggrate && !audioSource.isPlaying)
         {
             patientHeartManager.IschemicTrigger1();
             specialHaptics.IrregularHeart();
         }
-        else if (LifeStyleChoice == Options.Exercising)
+        else if (LifeStyleChoice == Options.Exercising && !audioSource.isPlaying)
         {
 
         }
-        else if (LifeStyleChoice == Options.Alcohol)
+        else if (LifeStyleChoice == Options.Alcohol && !audioSource.isPlaying)
         {
 
         }
