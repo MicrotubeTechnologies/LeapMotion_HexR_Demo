@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Custom_Heart : MonoBehaviour
 {
+    // 1 = Normal Heart
+    // 2 = Hypertensive Heart
+    // 3 = 
     private float CurrentStep = 1;
     public AudioSource audiosource;
     public PatientHeartManager patientHeartManager;
@@ -25,9 +28,19 @@ public class Custom_Heart : MonoBehaviour
             if (CurrentStep == 1)
             {
                 patientHeartManager.NormalHeartTrigger();
-                CurrentStep = 2;
+                CurrentStep = 0;
+            }
+            else if(CurrentStep == 2)
+            {
+                patientHeartManager.HypertensiveTrigger2();
+                CurrentStep = 0;
             }
         }
 
+    }
+
+    public void CurrentStepChanger(float newStep)
+    {
+        CurrentStep = newStep;
     }
 }
