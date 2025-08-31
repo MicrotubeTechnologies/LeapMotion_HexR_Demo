@@ -40,10 +40,40 @@ public class Custom_Heart : MonoBehaviour
                 patientHeartManager.IschemicTrigger2();
                 CurrentStep = 0;
             }
+            else if (CurrentStep == 4)
+            {
+                patientHeartManager.AthleticTrigger2();
+                CurrentStep = 0;
+            }
         }
 
     }
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (!audiosource.isPlaying)
+        {
+            if (CurrentStep == 1)
+            {
+                patientHeartManager.NormalHeartTrigger();
+                CurrentStep = 0;
+            }
+            else if (CurrentStep == 2)
+            {
+                patientHeartManager.HypertensiveTrigger2();
+                CurrentStep = 0;
+            }
+            else if (CurrentStep == 3)
+            {
+                patientHeartManager.IschemicTrigger2();
+                CurrentStep = 0;
+            }
+            else if (CurrentStep == 4)
+            {
+                patientHeartManager.AthleticTrigger2();
+                CurrentStep = 0;
+            }
+        }
+    }
     public void CurrentStepChanger(float newStep)
     {
         CurrentStep = newStep;

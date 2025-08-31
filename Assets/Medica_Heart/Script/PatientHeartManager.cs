@@ -6,15 +6,17 @@ using System;
 
 public class PatientHeartManager : MonoBehaviour
 {
+    #region Parameters
     public TextMeshProUGUI HeartTypeText; // Description text of the type of heart
     public List<GameObject> lifestyleChoice = new List<GameObject>();
-    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2;
+    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2;
     public AudioSource audioSource;
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
     public Custom_Heart custom_Heart;
-    public Material NormalMat, IschemicMat;  // Assign in Inspector
-    public Renderer Heart_Renderer;
-    public GameObject HypertensiveHeartModel, NormalHeatModel;
+    public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel;
+    private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +34,11 @@ public class PatientHeartManager : MonoBehaviour
         NormalHeartStart();
     }
 
+    #region Normal Heart
     public void NormalHeartStart()
     {
+        HeartType("Normal Heart", NormalHeatModel);
         HideLifestyleChoices();
-        Heart_Renderer.material = NormalMat;
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -51,7 +54,6 @@ public class PatientHeartManager : MonoBehaviour
     }
     public void NormalHeartTrigger()
     {
-        HeartType("Normal Heart");
         float Delay = 5f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -68,7 +70,7 @@ public class PatientHeartManager : MonoBehaviour
 
     }
 
-
+    #endregion
 
     #region Hypertensive
     public void HypertensiveTrigger1()
@@ -80,10 +82,8 @@ public class PatientHeartManager : MonoBehaviour
                 child.SetActive(false);
             }
         }
-        HypertensiveHeartModel.SetActive(true);
-        NormalHeatModel.SetActive(false);
         //enlarged, floppy heart, weak pulsation.
-        HeartType("Hypertensive Heart");
+        HeartType("Hypertensive Heart", HypertensiveHeartModel);
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -104,6 +104,7 @@ public class PatientHeartManager : MonoBehaviour
 
     public void HypertensiveTrigger2()
     {
+        Hyperdone = true;
         float Delay = 6f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -126,8 +127,7 @@ public class PatientHeartManager : MonoBehaviour
     public void IschemicTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Ischemic Heart");
-        Heart_Renderer.material = IschemicMat;
+        HeartType("Ischemic Heart", IschemicModel);
         foreach (GameObject child in lifestyleChoice)
         {
             if (child.name != "Cigrattes")
@@ -167,15 +167,60 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = IschemicAudio2;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
+        Ischemicdone = true;
         StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
     }
 
     #endregion
-    public void DilatedTrigger()
+
+    #region Athletic
+    public void AthleticTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Dilated Heart");
+        HeartType("Athletic Heart", AtheleticModel);
+        Athleticdone = true;
+        foreach (GameObject child in lifestyleChoice)
+        {
+            if (child.name != "Dumbbell")
+            {
+                child.SetActive(false);
+            }
+        }
+        float Delay = 4.5f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "Now let’s look at what happens when we care for the heart through regular exercise. ", startTime = Delay },
+            new SubtitleLine { text = "Notice how this heart is a little bigger and glowing brightly, pumping with strength and efficiency. ", startTime = Delay + 5f },
+            new SubtitleLine { text = "This is sometimes called an athletic heart. Unlike a hypertensive heart that grows stiff from pressure", startTime = Delay + 11f },
+            new SubtitleLine { text = "an athletic heart grows stronger and more efficient. ", startTime = Delay + 14f},
+            new SubtitleLine { text = "Go ahead  reach out and touch the athletic heart to feel the difference yourself.", startTime = Delay + 20f }
+        };
+        audioSource.clip = AthleticAudio1;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+        custom_Heart.CurrentStepChanger(4f);
+        StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
+
+    public void AthleticTrigger2()
+    {
+        float Delay = 4f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "Do you feel that? Stronger, but still smooth and steady.  ", startTime = Delay },
+            new SubtitleLine { text = "That’s the mark of a well-trained, healthy heart.  ", startTime = Delay + 3.5f },
+            new SubtitleLine { text = "Regular exercise helps the heart pump more efficiently, lowers blood pressure, improves circulation, and protects against heart disease. ", startTime = Delay +11f },
+            new SubtitleLine { text = "Just 30 minutes of activity a day can make a lifetime of difference.  ", startTime = Delay + 16f},
+            new SubtitleLine { text = "Now let's try another lifestyle choice, shall we?", startTime = Delay + 18f }
+
+        };
+        audioSource.clip = AthleticAudio2;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+        StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
+    }
+
+    #endregion
 
     #region Helper
 
@@ -190,18 +235,46 @@ public class PatientHeartManager : MonoBehaviour
         onFinished?.Invoke();
     }
 
-    public void HeartType(string HeartCondition)
+    public void HeartType(string HeartCondition, GameObject HeartSelected)
     {
+        HypertensiveHeartModel.SetActive(false);
+        NormalHeatModel.SetActive(false);
+        IschemicModel.SetActive(false);
+        AtheleticModel.SetActive(false);
         HeartTypeText.text = HeartCondition;
+        HeartSelected.SetActive(true);
     }
     private void ShowLifestylechoices()
     {
-        HypertensiveHeartModel.SetActive(false);
-        NormalHeatModel.SetActive(true);
-        Heart_Renderer.material = NormalMat;
-        foreach (GameObject child in lifestyleChoice)
+        HeartType("Normal Heart", NormalHeatModel);
+        // Dont show object that is already completed
+        if (!Hyperdone)
         {
-            child.SetActive(true);
+            lifestyleChoice[1].SetActive(true);
+        }
+        else
+        {
+            lifestyleChoice[1].SetActive(false);
+        }
+        if (!Athleticdone)
+        {
+            lifestyleChoice[0].SetActive(true);
+        }
+        else
+        {
+            lifestyleChoice[0].SetActive(false) ;
+        }
+        if (!Ischemicdone)
+        {
+            lifestyleChoice[2].SetActive(true);
+        }
+        else
+        {
+            lifestyleChoice[2].SetActive(false);
+        }
+        if(Hyperdone && Athleticdone && Ischemicdone)
+        {
+
         }
     }
     private void HideLifestyleChoices()
