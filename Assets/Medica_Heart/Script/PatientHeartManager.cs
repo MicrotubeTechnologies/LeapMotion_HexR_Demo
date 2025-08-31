@@ -12,7 +12,6 @@ public class PatientHeartManager : MonoBehaviour
     public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2;
     public AudioSource audioSource;
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
-    public Custom_Heart custom_Heart;
     public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel;
     private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false;
     #endregion
@@ -98,7 +97,6 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = HypertensiveAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        custom_Heart.CurrentStepChanger(2f);
         StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
 
@@ -149,7 +147,6 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = IschemicAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        custom_Heart.CurrentStepChanger(3f);
         StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
     public void IschemicTrigger2()
@@ -198,7 +195,6 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = AthleticAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        custom_Heart.CurrentStepChanger(4f);
         StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
 

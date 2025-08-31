@@ -7,7 +7,9 @@ public class Custom_Heart : MonoBehaviour
     // 1 = Normal Heart
     // 2 = Hypertensive Heart
     // 3 = Ischemic Heart
-    private float CurrentStep = 1;
+    public enum Options { Normal, Ischemic, Hypertensive, Athletic }
+    public Options TypeOfHeart;
+    private bool Done = false;
     public AudioSource audiosource;
     public PatientHeartManager patientHeartManager;
     // Start is called before the first frame update
@@ -25,25 +27,25 @@ public class Custom_Heart : MonoBehaviour
     {
         if(!audiosource.isPlaying)
         {
-            if (CurrentStep == 1)
+            if (TypeOfHeart == Options.Normal && Done)
             {
                 patientHeartManager.NormalHeartTrigger();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if(CurrentStep == 2)
+            else if(TypeOfHeart == Options.Hypertensive && Done)
             {
                 patientHeartManager.HypertensiveTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if (CurrentStep == 3)
+            else if (TypeOfHeart == Options.Ischemic && Done)
             {
                 patientHeartManager.IschemicTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if (CurrentStep == 4)
+            else if (TypeOfHeart == Options.Athletic && Done)
             {
                 patientHeartManager.AthleticTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
         }
 
@@ -52,30 +54,26 @@ public class Custom_Heart : MonoBehaviour
     {
         if (!audiosource.isPlaying)
         {
-            if (CurrentStep == 1)
+            if (TypeOfHeart == Options.Normal && Done)
             {
                 patientHeartManager.NormalHeartTrigger();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if (CurrentStep == 2)
+            else if (TypeOfHeart == Options.Hypertensive && Done)
             {
                 patientHeartManager.HypertensiveTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if (CurrentStep == 3)
+            else if (TypeOfHeart == Options.Ischemic && Done)
             {
                 patientHeartManager.IschemicTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
-            else if (CurrentStep == 4)
+            else if (TypeOfHeart == Options.Athletic && Done)
             {
                 patientHeartManager.AthleticTrigger2();
-                CurrentStep = 0;
+                Done = true;
             }
         }
-    }
-    public void CurrentStepChanger(float newStep)
-    {
-        CurrentStep = newStep;
     }
 }
