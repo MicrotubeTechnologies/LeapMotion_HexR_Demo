@@ -35,7 +35,32 @@ public class SubtitleHelper : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Update()
+    {
+        if (isPlaying && Input.GetKeyDown(KeyCode.Space))
+        {
+            ShowLastSubtitle();
+        }
+    }
 
+    private void ShowLastSubtitle()
+    {
+        StopAllCoroutines();
+        if (subtitleQueue.Count > 0)
+        {
+            // Take the last subtitle in the queue
+            SubtitleLine last = default;
+            foreach (var s in subtitleQueue) last = s;
+
+            string formatted = SplitIntoLines(last.text, maxCharsPerLine);
+            subtitleText.text = formatted;
+            SetAlpha(1f);
+        }
+
+        // End everything
+        subtitleQueue.Clear();
+        isPlaying = false;
+    }
     /// <summary>
     /// Queue subtitles for an audio clip
     /// </summary>

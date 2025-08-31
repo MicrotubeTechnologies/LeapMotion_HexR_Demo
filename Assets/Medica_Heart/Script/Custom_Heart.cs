@@ -27,22 +27,22 @@ public class Custom_Heart : MonoBehaviour
     {
         if(!audiosource.isPlaying)
         {
-            if (TypeOfHeart == Options.Normal && Done)
+            if (TypeOfHeart == Options.Normal && !Done)
             {
                 patientHeartManager.NormalHeartTrigger();
                 Done = true;
             }
-            else if(TypeOfHeart == Options.Hypertensive && Done)
+            else if(TypeOfHeart == Options.Hypertensive && !Done)
             {
                 patientHeartManager.HypertensiveTrigger2();
                 Done = true;
             }
-            else if (TypeOfHeart == Options.Ischemic && Done)
+            else if (TypeOfHeart == Options.Ischemic && !Done)
             {
                 patientHeartManager.IschemicTrigger2();
                 Done = true;
             }
-            else if (TypeOfHeart == Options.Athletic && Done)
+            else if (TypeOfHeart == Options.Athletic && !Done)
             {
                 patientHeartManager.AthleticTrigger2();
                 Done = true;
@@ -54,22 +54,22 @@ public class Custom_Heart : MonoBehaviour
     {
         if (!audiosource.isPlaying)
         {
-            if (TypeOfHeart == Options.Normal && Done)
+            if (TypeOfHeart == Options.Normal && !Done)
             {
                 patientHeartManager.NormalHeartTrigger();
                 Done = true;
             }
-            else if (TypeOfHeart == Options.Hypertensive && Done)
+            else if (TypeOfHeart == Options.Hypertensive && !Done)
             {
                 patientHeartManager.HypertensiveTrigger2();
                 Done = true;
             }
-            else if (TypeOfHeart == Options.Ischemic && Done)
+            else if (TypeOfHeart == Options.Ischemic && !Done)
             {
                 patientHeartManager.IschemicTrigger2();
                 Done = true;
             }
-            else if (TypeOfHeart == Options.Athletic && Done)
+            else if (TypeOfHeart == Options.Athletic && !Done)
             {
                 patientHeartManager.AthleticTrigger2();
                 Done = true;
