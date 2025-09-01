@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PatientHeartManager : MonoBehaviour
 {
     #region Parameters
     public TextMeshProUGUI HeartTypeText; // Description text of the type of heart
     public List<GameObject> lifestyleChoice = new List<GameObject>();
-    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2, Completed;
+    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2, Completed, Sad;
     public AudioSource audioSource;
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
     public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel, Recap_GameObject;
-    private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false;
+    private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false, SadDone = false;
+
+    [HideInInspector]
+    public float ThrowCounter = 0;
     #endregion
 
     // Start is called before the first frame update
@@ -29,8 +33,44 @@ public class PatientHeartManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Quit();
+        }
+
+        if(ThrowCounter > 10 && !audioSource.isPlaying && !SadDone)
+        {
+            SadTrigger();
+        }
+
+    }
+    void Quit()
+    {
+        // If running in the Unity editor
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                            // If running as a build
+                            Application.Quit();
+        #endif
     }
 
+    private void SadTrigger()
+    {
+        float Delay = 4f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "Hey, can you stop throwing my heart away? It's making me sad. ", startTime = Delay }
+        };
+        SadDone = true;
+        audioSource.clip = Sad;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+    }
     public void GameStart()
     {
         Recap_GameObject.SetActive(false);
@@ -272,6 +312,7 @@ public class PatientHeartManager : MonoBehaviour
         {
             lifestyleChoice[1].SetActive(false);
         }
+
         if (!Athleticdone)
         {
             lifestyleChoice[0].SetActive(true);
@@ -280,6 +321,7 @@ public class PatientHeartManager : MonoBehaviour
         {
             lifestyleChoice[0].SetActive(false) ;
         }
+
         if (!Ischemicdone)
         {
             lifestyleChoice[2].SetActive(true);
@@ -288,6 +330,7 @@ public class PatientHeartManager : MonoBehaviour
         {
             lifestyleChoice[2].SetActive(false);
         }
+
         if(Hyperdone && Athleticdone && Ischemicdone)
         {
             AllDone();

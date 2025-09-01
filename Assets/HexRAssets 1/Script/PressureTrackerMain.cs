@@ -295,9 +295,16 @@ namespace HexR
             float[] TheSpeed = new float[] { 1, 1, 1, 1, 1, 1 };
             bool[] TheBool = new bool[] { false, false, false, false, false, false };
 
-            byte[] btData = gloveHandler.haptics.HEXRPressure(AllFingers, TheBool, ThePressure, TheSpeed);
+            try
+            {
+                byte[] btData = gloveHandler.haptics.HEXRPressure(AllFingers, TheBool, ThePressure, TheSpeed);
 
-            gloveHandler.BTSend(btData);
+                gloveHandler.BTSend(btData);
+            }
+            catch
+            {
+
+            }
 
         }
         public void RemoveAllVibrations()
@@ -310,8 +317,16 @@ namespace HexR
             float[] TheSpeed = new float[] { 1, 1, 1, 1, 1, 1 };
             bool[] TheBool = new bool[] { false, false, false, false, false, false };
 
-            byte[] btData = gloveHandler.haptics.HEXRVibration(AllFingers, TheBool, TheFrequency, ThePressure, ThePeakRatio, TheSpeed, ThePressure);
-            gloveHandler.BTSend(btData);
+            try
+            {
+                byte[] btData = gloveHandler.haptics.HEXRVibration(AllFingers, TheBool, TheFrequency, ThePressure, ThePeakRatio, TheSpeed, ThePressure);
+                gloveHandler.BTSend(btData);
+            }
+            catch
+            {
+
+            }
+
         }
 
         public async void TriggerPulseIt()

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ResetOnDistance : MonoBehaviour
 {
+    public PatientHeartManager patientHeartManager;
     private float maxDistance = 0.35f; // max allowed distance
     private Vector3 spawnPoint;
     private Quaternion spawnRotation;
@@ -34,6 +35,10 @@ public class ResetOnDistance : MonoBehaviour
         {
             rb.velocity = Vector3.zero;        // stop movement
             rb.angularVelocity = Vector3.zero; // stop spinning
+        }
+        if(patientHeartManager != null)
+        {
+            patientHeartManager.ThrowCounter += 1;
         }
     }
 }
