@@ -9,10 +9,10 @@ public class PatientHeartManager : MonoBehaviour
     #region Parameters
     public TextMeshProUGUI HeartTypeText; // Description text of the type of heart
     public List<GameObject> lifestyleChoice = new List<GameObject>();
-    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2;
+    public AudioClip NormalAudio1, NormalAudio2, HypertensiveAudio1, HypertensiveAudio2, IschemicAudio1, IschemicAudio2, AthleticAudio1, AthleticAudio2, Completed;
     public AudioSource audioSource;
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
-    public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel;
+    public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel, Recap_GameObject;
     private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false;
     #endregion
 
@@ -33,13 +33,14 @@ public class PatientHeartManager : MonoBehaviour
 
     public void GameStart()
     {
+        Recap_GameObject.SetActive(false);
         NormalHeartStart();
     }
 
     #region Normal Heart
     public void NormalHeartStart()
     {
-        HeartType("Normal Heart", NormalHeatModel);
+        HeartType("Normal", NormalHeatModel);
         HideLifestyleChoices();
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
@@ -85,7 +86,7 @@ public class PatientHeartManager : MonoBehaviour
             }
         }
         //enlarged, floppy heart, weak pulsation.
-        HeartType("Hypertensive Heart", HypertensiveHeartModel);
+        HeartType("Hypertensive", HypertensiveHeartModel);
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -128,7 +129,7 @@ public class PatientHeartManager : MonoBehaviour
     public void IschemicTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Ischemic Heart", IschemicModel);
+        HeartType("Ischemic", IschemicModel);
         foreach (GameObject child in lifestyleChoice)
         {
             if (child.name != "Cigrattes")
@@ -177,7 +178,7 @@ public class PatientHeartManager : MonoBehaviour
     public void AthleticTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Athletic Heart", AtheleticModel);
+        HeartType("Athletic", AtheleticModel);
         Athleticdone = true;
         foreach (GameObject child in lifestyleChoice)
         {
@@ -221,6 +222,22 @@ public class PatientHeartManager : MonoBehaviour
 
     #endregion
 
+    private void AllDone()
+    {
+        HeartType("Press R to return to menu", Recap_GameObject);
+        audioSource.clip = Completed;
+        audioSource.Play();
+        float Delay = 4f;
+        SubtitleLine[] lines = new SubtitleLine[]
+        {
+            new SubtitleLine { text = "You’ve now discovered how lifestyle choices can weaken or strengthen the heart.  ", startTime = Delay },
+            new SubtitleLine { text = "From here on, you’re free to explore. Touch each heart again, compare how they feel,  ", startTime = Delay +4f },
+            new SubtitleLine { text = "and reflect on the choices that lead to them. ", startTime = Delay +7f },
+            new SubtitleLine { text = "Remember the heart you take care of today is the one that carries you into tomorrow.", startTime = Delay + 10f}
+        };
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Recap_GameObject.SetActive(true);
+    }    
     #region Helper
 
     private IEnumerator WaitForAudioToFinish(Action onFinished)
@@ -273,7 +290,7 @@ public class PatientHeartManager : MonoBehaviour
         }
         if(Hyperdone && Athleticdone && Ischemicdone)
         {
-
+            AllDone();
         }
     }
     private void HideLifestyleChoices()
