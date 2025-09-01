@@ -303,33 +303,27 @@ public class PatientHeartManager : MonoBehaviour
     private void ShowLifestylechoices()
     {
         HeartType("Normal Heart", NormalHeatModel);
+        lifestyleChoice[0].SetActive(true);
+        lifestyleChoice[1].SetActive(true);
+        lifestyleChoice[2].SetActive(true);
         // Dont show object that is already completed
-        if (!Hyperdone)
-        {
-            lifestyleChoice[1].SetActive(true);
-        }
-        else
+        if (Hyperdone)
         {
             lifestyleChoice[1].SetActive(false);
         }
 
-        if (!Athleticdone)
+
+        if (Athleticdone)
         {
-            lifestyleChoice[0].SetActive(true);
-        }
-        else
-        {
-            lifestyleChoice[0].SetActive(false) ;
+            lifestyleChoice[0].SetActive(false);
         }
 
-        if (!Ischemicdone)
-        {
-            lifestyleChoice[2].SetActive(true);
-        }
-        else
+
+        if (Ischemicdone)
         {
             lifestyleChoice[2].SetActive(false);
         }
+
 
         if(Hyperdone && Athleticdone && Ischemicdone)
         {
