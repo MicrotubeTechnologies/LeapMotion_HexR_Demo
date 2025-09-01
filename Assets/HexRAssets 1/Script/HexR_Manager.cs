@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 namespace HexR
 {
@@ -40,6 +41,17 @@ namespace HexR
 
                 }
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                try
+                {
+                    ReloadGame();
+                }
+                catch
+                {
+
+                }
+            }
             // Check if the Escape key is pressed
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -55,6 +67,17 @@ namespace HexR
                     // If running as a build
                     Application.Quit();
             #endif
+        }
+        public void ReloadGame()
+        {
+            // Clear PlayerPrefs if you want a full reset
+            PlayerPrefs.DeleteAll();
+
+            // Reload the first scene (index 0, usually your startup scene)
+            SceneManager.LoadScene(0);
+
+            // Reset time scale in case it was paused
+            Time.timeScale = 1f;
         }
         private void ConnectionControl()
         {
