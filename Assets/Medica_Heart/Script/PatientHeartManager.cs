@@ -141,11 +141,11 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = HypertensiveAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
 
     public void HypertensiveTrigger2()
     {
+        HideLifestyleChoices();
         Hyperdone = true;
         float Delay = 6f;
         SubtitleLine[] lines = new SubtitleLine[]
@@ -191,10 +191,10 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = IschemicAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
     public void IschemicTrigger2()
     {
+        HideLifestyleChoices();
         float Delay = 5.5f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -239,11 +239,11 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = AthleticAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
-        StartCoroutine(WaitForAudioToFinish(HideLifestyleChoices));
     }
 
     public void AthleticTrigger2()
     {
+        HideLifestyleChoices();
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -312,18 +312,15 @@ public class PatientHeartManager : MonoBehaviour
             lifestyleChoice[1].SetActive(false);
         }
 
-
         if (Athleticdone)
         {
             lifestyleChoice[0].SetActive(false);
         }
 
-
         if (Ischemicdone)
         {
             lifestyleChoice[2].SetActive(false);
         }
-
 
         if(Hyperdone && Athleticdone && Ischemicdone)
         {

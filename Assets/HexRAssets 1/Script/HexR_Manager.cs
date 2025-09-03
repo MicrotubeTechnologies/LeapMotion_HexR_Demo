@@ -79,6 +79,7 @@ namespace HexR
         }
         public void ConnectRightBT()
         {
+            rightHand.gameObject.SetActive(true);
             controlledHandsList.Remove("Left");
             controlledHandsList.Add("Right");
             RightBtText.text = "Searching for device...";
@@ -87,6 +88,7 @@ namespace HexR
         }
         public void ConnectLeftBT()
         {
+            leftHand.gameObject.SetActive(true);
             controlledHandsList.Add("Left");
             controlledHandsList.Remove("Right");
             LeftBtText.text = "Searching for device...";

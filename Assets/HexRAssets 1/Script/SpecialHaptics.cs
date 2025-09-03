@@ -43,6 +43,7 @@ namespace HexR
         #region Heart Beat Fields
         public float InTimer = 0.4f, OutTimer = 0.3f;
         public float HeartBeatPressure = 0.5f;
+        public float HeartBeatSpeed = 1f;
         [Range(10f, 60f)]
         public bool IncludePalm = false;
         public HeartBeat heartbeat;
@@ -545,7 +546,7 @@ namespace HexR
                 Haptics.Finger[] AllFingers = new Haptics.Finger[] { Haptics.Finger.Thumb, Haptics.Finger.Index, Haptics.Finger.Middle, Haptics.Finger.Ring, Haptics.Finger.Pinky, Haptics.Finger.Palm };
 
                 float[] ThePressure = new float[] { HeartBeatPressure, HeartBeatPressure, HeartBeatPressure, HeartBeatPressure, HeartBeatPressure, HeartBeatPressure };
-                float[] TheSpeed = new float[] { 1, 1, 1, 1, 1, 1 };
+                float[] TheSpeed = new float[] { HeartBeatSpeed, HeartBeatSpeed, HeartBeatSpeed, HeartBeatSpeed, HeartBeatSpeed, HeartBeatSpeed };
                 bool[] FingerToTrigger = new bool[] { Thumb_Bool, Index_Bool, Middle_Bool, Ring_Bool, Pinky_Bool, Palm_Bool };
                 byte[] btData = gloveHandler.haptics.HEXRPressure(AllFingers, FingerToTrigger, ThePressure, TheSpeed);
                 gloveHandler.BTSend(btData);
@@ -690,12 +691,21 @@ namespace HexR
                     "Haptic Pressure",
                     "Set the Haptic Pressure between 0.1 and 1. 0.1 = lowest, 1 = strongest"
                 );
+                GUIContent speedContent = new GUIContent(
+                    "Inflation Speed",
+                    "Set the Inflation Speed between 0.1 and 1. 0.1 = slowest, 1 = fastest"
+                );
                 controller.HeartBeatPressure = EditorGUILayout.Slider(sliderContent, controller.HeartBeatPressure, 0.1f, 1f);
 
 
                 // Round to nearest increment of 10
                 controller.HeartBeatPressure = Mathf.Round(controller.HeartBeatPressure * 10) / 10;
 
+                controller.HeartBeatSpeed = EditorGUILayout.Slider(speedContent, controller.HeartBeatSpeed, 0.1f, 1f);
+
+
+                // Round to nearest increment of 10
+                controller.HeartBeatSpeed = Mathf.Round(controller.HeartBeatSpeed * 10) / 10;
                 // Timers
                 controller.InTimer = EditorGUILayout.FloatField("In Timer", controller.InTimer);
                 controller.OutTimer = EditorGUILayout.FloatField("Out Timer", controller.OutTimer);
