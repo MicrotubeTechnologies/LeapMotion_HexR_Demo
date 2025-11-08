@@ -40,22 +40,9 @@ namespace HexR
 
                 }
             }
-            // Check if the Escape key is pressed
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Quit();
-            }
+
         }
-        void Quit()
-        {
-            // If running in the Unity editor
-            #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                    // If running as a build
-                    Application.Quit();
-            #endif
-        }
+
         private void ConnectionControl()
         {
             if (!ConnectedLeft && leftHand.bleConnected)

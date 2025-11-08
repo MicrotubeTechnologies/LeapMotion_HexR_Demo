@@ -15,7 +15,8 @@ public class PatientHeartManager : MonoBehaviour
     public SubtitleHelper subtitleHelper; // Create the subtitle effect
     public GameObject HypertensiveHeartModel, NormalHeatModel, IschemicModel, AtheleticModel, Recap_GameObject;
     private bool Hyperdone = false, Ischemicdone = false, Athleticdone = false, SadDone = false;
-
+    // Declare a delegate
+    private Action currentFunction;
     [HideInInspector]
     public float ThrowCounter = 0;
     #endregion
@@ -32,15 +33,14 @@ public class PatientHeartManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             audioSource.Stop();
+            StartCoroutine(Invoker());
+
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Quit();
-        }
+
 
         if(ThrowCounter > 10 && !audioSource.isPlaying && !SadDone)
         {
@@ -48,7 +48,7 @@ public class PatientHeartManager : MonoBehaviour
         }
 
     }
-    void Quit()
+    public void Quit()
     {
         // If running in the Unity editor
         #if UNITY_EDITOR
@@ -73,7 +73,13 @@ public class PatientHeartManager : MonoBehaviour
     }
     public void GameStart()
     {
+        AudioListener.pause = false;  // resumes
+        Hyperdone = false;
+        Ischemicdone = false;
+        Athleticdone = false; 
+        SadDone = false;
         Recap_GameObject.SetActive(false);
+        audioSource.Stop();
         NormalHeartStart();
     }
 
@@ -94,9 +100,11 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = NormalAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
+        currentFunction = NormalHeartTrigger;
     }
     public void NormalHeartTrigger()
     {
+        currentFunction = null;
         float Delay = 5f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -118,13 +126,7 @@ public class PatientHeartManager : MonoBehaviour
     #region Hypertensive
     public void HypertensiveTrigger1()
     {
-        foreach (GameObject child in lifestyleChoice)
-        {
-            if(child.name != "JunkFood")
-            {
-                child.SetActive(false);
-            }
-        }
+        HideLifestyleChoices();
         //enlarged, floppy heart, weak pulsation.
         HeartType("Hypertensive", HypertensiveHeartModel);
         float Delay = 4f;
@@ -141,11 +143,12 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = HypertensiveAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
+        currentFunction = HypertensiveTrigger2;
     }
 
     public void HypertensiveTrigger2()
     {
-        HideLifestyleChoices();
+        currentFunction = null;
         Hyperdone = true;
         float Delay = 6f;
         SubtitleLine[] lines = new SubtitleLine[]
@@ -170,13 +173,7 @@ public class PatientHeartManager : MonoBehaviour
     {
         //weak beats, slight discoloration.
         HeartType("Ischemic", IschemicModel);
-        foreach (GameObject child in lifestyleChoice)
-        {
-            if (child.name != "Cigrattes")
-            {
-                child.SetActive(false);
-            }
-        }
+        HideLifestyleChoices();
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -191,10 +188,11 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = IschemicAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
+        currentFunction = IschemicTrigger2;
     }
     public void IschemicTrigger2()
     {
-        HideLifestyleChoices();
+        currentFunction = null;
         float Delay = 5.5f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -220,13 +218,7 @@ public class PatientHeartManager : MonoBehaviour
         //weak beats, slight discoloration.
         HeartType("Athletic", AtheleticModel);
         Athleticdone = true;
-        foreach (GameObject child in lifestyleChoice)
-        {
-            if (child.name != "Dumbbell")
-            {
-                child.SetActive(false);
-            }
-        }
+        HideLifestyleChoices();
         float Delay = 4.5f;
         SubtitleLine[] lines = new SubtitleLine[]
         {
@@ -239,10 +231,12 @@ public class PatientHeartManager : MonoBehaviour
         audioSource.clip = AthleticAudio1;
         audioSource.Play();
         subtitleHelper.PlaySubtitles(audioSource, lines);
+        currentFunction = AthleticTrigger2;
     }
 
     public void AthleticTrigger2()
     {
+        currentFunction = null;
         HideLifestyleChoices();
         float Delay = 4f;
         SubtitleLine[] lines = new SubtitleLine[]
@@ -264,7 +258,7 @@ public class PatientHeartManager : MonoBehaviour
 
     private void AllDone()
     {
-        HeartType("Press R to return to menu", Recap_GameObject);
+        HeartType("Press esc to return to menu", Recap_GameObject);
         audioSource.clip = Completed;
         audioSource.Play();
         float Delay = 4f;
@@ -290,7 +284,12 @@ public class PatientHeartManager : MonoBehaviour
         // Call the function you passed in
         onFinished?.Invoke();
     }
-
+    private IEnumerator Invoker()
+    {
+        yield return new WaitForSeconds(0.2f); // wait for the next frame
+        // Call the function you passed in
+        currentFunction?.Invoke();
+    }
     public void HeartType(string HeartCondition, GameObject HeartSelected)
     {
         HypertensiveHeartModel.SetActive(false);
@@ -333,6 +332,10 @@ public class PatientHeartManager : MonoBehaviour
         {
             child.SetActive(false);
         }
+    }
+    public void HeartName(string HeartName)
+    {
+        HeartTypeText.text = HeartName;
     }
     #endregion
 }

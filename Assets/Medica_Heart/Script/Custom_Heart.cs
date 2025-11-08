@@ -9,6 +9,8 @@ public class Custom_Heart : MonoBehaviour
     // 3 = Ischemic Heart
     public enum Options { Normal, Ischemic, Hypertensive, Athletic }
     public Options TypeOfHeart;
+    public enum Mode {Recap, Normal }
+    public Mode mode;
     private bool Done = false;
     public AudioSource audiosource;
     public PatientHeartManager patientHeartManager;
@@ -23,57 +25,76 @@ public class Custom_Heart : MonoBehaviour
     {
         
     }
+    private void OnEnable()
+    {
+        Done = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if(!audiosource.isPlaying)
+        if(mode == Mode.Normal)
         {
-            if (TypeOfHeart == Options.Normal && !Done)
+            if (!audiosource.isPlaying)
             {
-                patientHeartManager.NormalHeartTrigger();
-                Done = true;
-            }
-            else if(TypeOfHeart == Options.Hypertensive && !Done)
-            {
-                patientHeartManager.HypertensiveTrigger2();
-                Done = true;
-            }
-            else if (TypeOfHeart == Options.Ischemic && !Done)
-            {
-                patientHeartManager.IschemicTrigger2();
-                Done = true;
-            }
-            else if (TypeOfHeart == Options.Athletic && !Done)
-            {
-                patientHeartManager.AthleticTrigger2();
-                Done = true;
+                if (TypeOfHeart == Options.Normal && !Done)
+                {
+                    patientHeartManager.NormalHeartTrigger();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Hypertensive && !Done)
+                {
+                    patientHeartManager.HypertensiveTrigger2();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Ischemic && !Done)
+                {
+                    patientHeartManager.IschemicTrigger2();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Athletic && !Done)
+                {
+                    patientHeartManager.AthleticTrigger2();
+                    Done = true;
+                }
             }
         }
+        else
+        {
+            patientHeartManager.HeartName(TypeOfHeart.ToString());
+        }
+
 
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!audiosource.isPlaying)
+        if (mode == Mode.Normal)
         {
-            if (TypeOfHeart == Options.Normal && !Done)
+            if (!audiosource.isPlaying)
             {
-                patientHeartManager.NormalHeartTrigger();
-                Done = true;
+                if (TypeOfHeart == Options.Normal && !Done)
+                {
+                    patientHeartManager.NormalHeartTrigger();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Hypertensive && !Done)
+                {
+                    patientHeartManager.HypertensiveTrigger2();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Ischemic && !Done)
+                {
+                    patientHeartManager.IschemicTrigger2();
+                    Done = true;
+                }
+                else if (TypeOfHeart == Options.Athletic && !Done)
+                {
+                    patientHeartManager.AthleticTrigger2();
+                    Done = true;
+                }
             }
-            else if (TypeOfHeart == Options.Hypertensive && !Done)
-            {
-                patientHeartManager.HypertensiveTrigger2();
-                Done = true;
-            }
-            else if (TypeOfHeart == Options.Ischemic && !Done)
-            {
-                patientHeartManager.IschemicTrigger2();
-                Done = true;
-            }
-            else if (TypeOfHeart == Options.Athletic && !Done)
-            {
-                patientHeartManager.AthleticTrigger2();
-                Done = true;
-            }
+        }
+        else
+        {
+
         }
     }
 }
