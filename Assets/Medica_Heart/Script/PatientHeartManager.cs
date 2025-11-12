@@ -301,7 +301,11 @@ public class PatientHeartManager : MonoBehaviour
     }
     private void ShowLifestylechoices()
     {
-        HeartType("Normal Heart", NormalHeatModel);
+        NormalHeatModel.SetActive(false);
+        HypertensiveHeartModel.SetActive(false);
+        IschemicModel.SetActive(false);
+        AtheleticModel.SetActive(false);
+        //HeartType("Normal Heart", NormalHeatModel);
         lifestyleChoice[0].SetActive(true);
         lifestyleChoice[1].SetActive(true);
         lifestyleChoice[2].SetActive(true);
