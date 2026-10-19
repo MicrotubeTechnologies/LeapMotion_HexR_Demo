@@ -17,13 +17,21 @@ namespace HexR
         private bool ConnectedLeft =false, ConnectedRight=false;
         void Start()
         {
-            leftHand.onBluetoothConnected += HaptGlove_OnConnected;
-            leftHand.onBluetoothConnectionFailed += HaptGlove_OnConnectedFailed;
-            leftHand.onBluetoothDisconnected += HaptGlove_OnDisconnected;
+            if (leftHand != null)
+            {
+                leftHand.onBluetoothConnected += HaptGlove_OnConnected;
+                leftHand.onBluetoothConnectionFailed += HaptGlove_OnConnectedFailed;
+                leftHand.onBluetoothDisconnected += HaptGlove_OnDisconnected;
+            }
+            else Debug.LogError("[HexR] Left glove handler is not assigned on HexR_Manager.", this);
 
-            rightHand.onBluetoothConnected += HaptGlove_OnConnected;
-            rightHand.onBluetoothConnectionFailed += HaptGlove_OnConnectedFailed;
-            rightHand.onBluetoothDisconnected += HaptGlove_OnDisconnected;
+            if (rightHand != null)
+            {
+                rightHand.onBluetoothConnected += HaptGlove_OnConnected;
+                rightHand.onBluetoothConnectionFailed += HaptGlove_OnConnectedFailed;
+                rightHand.onBluetoothDisconnected += HaptGlove_OnDisconnected;
+            }
+            else Debug.LogError("[HexR] Right glove handler is not assigned on HexR_Manager.", this);
         }
 
         void Update()
@@ -45,70 +53,123 @@ namespace HexR
 
         private void ConnectionControl()
         {
-            if (!ConnectedLeft && leftHand.bleConnected)
+            // The right-hand branches used to assign ConnectedLeft - a copy/paste
+            // slip that meant the right glove's connected state was never tracked,
+            // so its label never reset on disconnect.
+            if (leftHand != null)
             {
-                ConnectedLeft = true;
+                if (!ConnectedLeft && leftHand.bleConnected)
+                {
+                    ConnectedLeft = true;
+                }
+                else if (ConnectedLeft && !leftHand.bleConnected)
+                {
+                    ConnectedLeft = false;
+                    if (LeftBtText != null) LeftBtText.color = Color.black;
+                }
             }
-            if (!ConnectedRight && rightHand.bleConnected)
+
+            if (rightHand != null)
             {
-                ConnectedLeft = true;
-            }
-            if (ConnectedLeft && !leftHand.bleConnected)
-            {
-                ConnectedLeft = false;
-                LeftBtText.color = Color.black;
-            }
-            if (ConnectedRight && !rightHand.bleConnected)
-            {
-                ConnectedLeft = false;
-                RightBtText.color = Color.black;
+                if (!ConnectedRight && rightHand.bleConnected)
+                {
+                    ConnectedRight = true;
+                }
+                else if (ConnectedRight && !rightHand.bleConnected)
+                {
+                    ConnectedRight = false;
+                    if (RightBtText != null) RightBtText.color = Color.black;
+                }
             }
         }
         public void ConnectRightBT()
         {
-            rightHand.gameObject.SetActive(true);
             controlledHandsList.Remove("Left");
             controlledHandsList.Add("Right");
-            RightBtText.text = "Searching for device...";
-            rightHand.GetComponent<HaptGloveHandler>().BTConnection();
-            StartCoroutine(CheckRightConnected());
+            Connect(rightHand, RightBtText, "Right");
         }
         public void ConnectLeftBT()
         {
-            leftHand.gameObject.SetActive(true);
             controlledHandsList.Add("Left");
             controlledHandsList.Remove("Right");
-            LeftBtText.text = "Searching for device...";
-            leftHand.GetComponent<HaptGloveHandler>().BTConnection();
-            StartCoroutine(CheckLeftConnected());
+            Connect(leftHand, LeftBtText, "Left");
         }
-        IEnumerator CheckRightConnected()
+
+        /// <summary>
+        /// Shared connect path for both gloves.
+        ///
+        /// The original code activated the glove object and called BTConnection()
+        /// on the same line. Activating a GameObject runs Awake and OnEnable
+        /// immediately but NOT Start, so the handler could still be half
+        /// initialised when the connection was kicked off - which surfaces as a
+        /// NullReferenceException thrown from inside HaptGloveHandler itself.
+        /// Waiting a frame lets Start run first.
+        /// </summary>
+        private void Connect(HaptGloveHandler hand, TextMeshProUGUI label, string handName)
         {
-            yield return new WaitForSeconds(0.1f); // Wait 2 seconds
-
-            if (rightHand.GetComponent<HaptGloveHandler>().bleConnected)
+            if (hand == null)
             {
-                RightBtText.text = "HexR Right Connected";
-            }
-            else
-            {
-                StartCoroutine(CheckRightConnected()); // Retry
+                Debug.LogError("[HexR] " + handName + " glove handler is not assigned on HexR_Manager.", this);
+                return;
             }
 
+            bool wasInactive = !hand.gameObject.activeInHierarchy;
+            hand.gameObject.SetActive(true);
+
+            if (label != null)
+                label.text = "Searching for device...";
+
+            StartCoroutine(ConnectRoutine(hand, label, handName, wasInactive));
         }
-        IEnumerator CheckLeftConnected()
+
+        private IEnumerator ConnectRoutine(HaptGloveHandler hand, TextMeshProUGUI label, string handName, bool wasInactive)
         {
-            yield return new WaitForSeconds(0.1f); // Wait 2 seconds
+            if (wasInactive)
+                yield return null;   // let the handler's Start() run before talking to it
 
-            if (leftHand.GetComponent<HaptGloveHandler>().bleConnected)
+            try
             {
-                LeftBtText.text = "HexR Left Connected";
+                hand.BTConnection();
             }
-            else
+            catch (System.Exception e)
             {
-                StartCoroutine(CheckLeftConnected()); // Retry
+                // BTConnection throws when there is no paired glove or no
+                // Bluetooth adapter available. Reporting it beats an unexplained
+                // stack trace every time the button is pressed.
+                Debug.LogWarning("[HexR] Could not start a " + handName + " glove connection: " + e.Message, this);
+                if (label != null)
+                    label.text = "No glove found";
+                yield break;
             }
 
+            yield return CheckConnected(hand, label, handName);
+        }
+
+        /// <summary>
+        /// Replaces the old CheckLeftConnected/CheckRightConnected pair, which
+        /// restarted themselves forever - every failed attempt left another
+        /// coroutine chain polling for the rest of the session.
+        /// </summary>
+        private IEnumerator CheckConnected(HaptGloveHandler hand, TextMeshProUGUI label, string handName)
+        {
+            const float timeout = 20f;
+            float waited = 0f;
+
+            while (waited < timeout)
+            {
+                if (hand.bleConnected)
+                {
+                    if (label != null)
+                        label.text = "HexR " + handName + " Connected";
+                    yield break;
+                }
+
+                yield return new WaitForSeconds(0.1f);
+                waited += 0.1f;
+            }
+
+            if (label != null)
+                label.text = "Connection timed out";
         }
         private void HaptGlove_OnConnected(HaptGloveHandler.HandType hand)
         {

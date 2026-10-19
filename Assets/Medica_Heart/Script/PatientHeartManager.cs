@@ -19,12 +19,40 @@ public class PatientHeartManager : MonoBehaviour
     private Action currentFunction;
     [HideInInspector]
     public float ThrowCounter = 0;
+
+    [Header("Localization")]
+    [Tooltip("Restart the segment that is playing in the new language when the language is switched mid-narration.")]
+    public bool replayNarrationOnLanguageChange = true;
+
+    // What is on screen right now, so it can be re-localised when the language flips.
+    private string currentNarrationKey;
+    private string currentHeartLabelEnglish;
+
+    // The heading's original Latin font, so English can be restored on switching back.
+    private TMP_FontAsset heartLabelDefaultFont;
     #endregion
+
+    private void Awake()
+    {
+        // Captured before anything localises the label, so the English font is not lost.
+        if (HeartTypeText != null)
+            heartLabelDefaultFont = HeartTypeText.font;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
+    }
+
+    private void OnEnable()
+    {
+        LocalizationManager.OnLanguageChanged += HandleLanguageChanged;
+    }
+
+    private void OnDisable()
+    {
+        LocalizationManager.OnLanguageChanged -= HandleLanguageChanged;
     }
 
     // Update is called once per frame
@@ -61,23 +89,18 @@ public class PatientHeartManager : MonoBehaviour
 
     private void SadTrigger()
     {
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Hey, can you stop throwing my heart away? It's making me sad. ", startTime = Delay }
-        };
         SadDone = true;
-        audioSource.clip = Sad;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.Sad, Sad);
     }
     public void GameStart()
     {
         AudioListener.pause = false;  // resumes
         Hyperdone = false;
         Ischemicdone = false;
-        Athleticdone = false; 
+        Athleticdone = false;
         SadDone = false;
+        ThrowCounter = 0;      // else a previous run's throws fire the sad line straight away
+        currentFunction = null; // else a stale Space press invokes last run's trigger
         Recap_GameObject.SetActive(false);
         audioSource.Stop();
         NormalHeartStart();
@@ -86,37 +109,15 @@ public class PatientHeartManager : MonoBehaviour
     #region Normal Heart
     public void NormalHeartStart()
     {
-        HeartType("Normal", NormalHeatModel);
+        HeartType(HeartNarration.LabelNormal, NormalHeatModel);
         HideLifestyleChoices();
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Welcome! Today, we’re going on a journey to understand the human heart. ", startTime = Delay },
-            new SubtitleLine { text = "Think of it like a guided museum tour, where you can see, and even feel how your heart works. ", startTime = Delay +4f },
-            new SubtitleLine { text = "Before we look at different heart problems, let’s meet the healthy heart the gold standard that we all want to protect. ", startTime = Delay +13f },
-            new SubtitleLine { text = "Here it is, your heart when it’s strong and well.It beats about 100,000 times every single day without resting.     ", startTime = Delay + 23f},
-            new SubtitleLine { text = "Reach out and touch it.    ", startTime = Delay + 35f }
-        };
-        audioSource.clip = NormalAudio1;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.NormalIntro, NormalAudio1);
         currentFunction = NormalHeartTrigger;
     }
     public void NormalHeartTrigger()
     {
         currentFunction = null;
-        float Delay = 5f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Do you feel that? That’s the rhythm of life — smooth, steady, and strong.  ", startTime = Delay },
-            new SubtitleLine { text = "A healthy heart is like a reliable pump; every beat pushes blood and oxygen through your body.  ", startTime = Delay + 6f },
-            new SubtitleLine { text = "Now, here’s the big idea for today ", startTime = Delay +8f },
-            new SubtitleLine { text = "the way you live affects whether your heart stays this way or changes for the worse. ", startTime = Delay + 14f},
-            new SubtitleLine { text = "Let’s see how everyday choices shape your heart.", startTime = Delay + 23f }
-        };
-        audioSource.clip = NormalAudio2;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.NormalTouch, NormalAudio2);
         StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
 
     }
@@ -128,21 +129,8 @@ public class PatientHeartManager : MonoBehaviour
     {
         HideLifestyleChoices();
         //enlarged, floppy heart, weak pulsation.
-        HeartType("Hypertensive", HypertensiveHeartModel);
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Look closely — the heart has changed. Its walls are thicker, its glow is weaker  ", startTime = Delay },
-            new SubtitleLine { text = "and the beat looks more forceful but less flexible. This is the transformation into a hypertensive heart.", startTime = Delay + 7f },
-            new SubtitleLine { text = "An unhealthy diet — too much salt, sugar, and fat — together with obesity, forces the heart to work overtime. ", startTime = Delay +15f },
-            new SubtitleLine { text = "High blood pressure causes the muscles to bulk up, just as lifting heavy weights makes your arms bigger. ", startTime = Delay + 22f},
-            new SubtitleLine { text = "But unlike strong arms, a stiff heart isn’t good news. ", startTime = Delay + 25f },
-            new SubtitleLine { text = "Go ahead, reach out and touch the hypertensive heart.", startTime = Delay + 28f },
-            new SubtitleLine { text = "Notice the difference in how it feels compared to the healthy one.", startTime = Delay + 31f }
-        };
-        audioSource.clip = HypertensiveAudio1;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        HeartType(HeartNarration.LabelHypertensive, HypertensiveHeartModel);
+        Narrate(HeartNarration.HypertensiveIntro, HypertensiveAudio1);
         currentFunction = HypertensiveTrigger2;
     }
 
@@ -150,20 +138,7 @@ public class PatientHeartManager : MonoBehaviour
     {
         currentFunction = null;
         Hyperdone = true;
-        float Delay = 6f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Do you feel that? Less bounce, more strain. That’s the silent burden of high blood pressure. ", startTime = Delay },
-            new SubtitleLine { text = "Most people don’t even notice it until damage is already happening. ", startTime = Delay + 4f },
-            new SubtitleLine { text = "When the heart walls get too thick, the chambers inside shrink, and less blood can be pumped out with each beat.  ", startTime = Delay +13f },
-            new SubtitleLine { text = "Over time, this raises the risk of heart failure, stroke, and kidney problems. ", startTime = Delay + 18f},
-            new SubtitleLine { text = "The good news: lifestyle changes — less salt, healthier food, regular exercise ", startTime = Delay + 23f },
-            new SubtitleLine { text = "can lower blood pressure and help keep your heart flexible and strong. ", startTime = Delay + 29f },
-            new SubtitleLine { text = "Now let's try another lifestyle choice, shall we?", startTime = Delay + 33f },
-        };
-        audioSource.clip = HypertensiveAudio2;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.HypertensiveTouch, HypertensiveAudio2);
         StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
     }
     #endregion
@@ -172,40 +147,15 @@ public class PatientHeartManager : MonoBehaviour
     public void IschemicTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Ischemic", IschemicModel);
+        HeartType(HeartNarration.LabelIschemic, IschemicModel);
         HideLifestyleChoices();
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Take a look at how the heart has changed after prolonged smoking.  ", startTime = Delay },
-            new SubtitleLine { text = "Notice the uneven areas, some parts are dimmer than others.", startTime = Delay + 3.5f },
-            new SubtitleLine { text = "This represents damage from restricted blood flow.", startTime = Delay + 6.5f },
-            new SubtitleLine { text = "This is called an ischemic heart. Smoking damages blood vessels,", startTime = Delay + 11f},
-            new SubtitleLine { text = "promotes plaque build-up, and limits oxygen supply to the heart muscle.", startTime = Delay + 14.5f },
-            new SubtitleLine { text = "Over time, some areas may weaken or even die off, leaving scars. ", startTime = Delay + 18f },
-            new SubtitleLine { text = "Go ahead, reach out and touch the ischemic heart to feel the difference yourself", startTime = Delay + 22f }
-        };
-        audioSource.clip = IschemicAudio1;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.IschemicIntro, IschemicAudio1);
         currentFunction = IschemicTrigger2;
     }
     public void IschemicTrigger2()
     {
         currentFunction = null;
-        float Delay = 5.5f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Do you feel that? The heartbeat is uneven, unpredictable, and weaker in some areas. ", startTime = Delay },
-            new SubtitleLine { text = "That’s the hallmark of an ischemic heart. Ischemic hearts are at risk of chest pain, ", startTime = Delay + 6f },
-            new SubtitleLine { text = "heart attacks, and even heart failure if blood flow is not restored.  ", startTime = Delay +9f },
-            new SubtitleLine { text = "The good news is that quitting smoking, eating healthy, and exercising can help prevent further damage and improve heart function. ", startTime = Delay + 17.5f},
-            new SubtitleLine { text = "Now let's try another lifestyle choice, shall we?	", startTime = Delay + 18f }
-
-        };
-        audioSource.clip = IschemicAudio2;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.IschemicTouch, IschemicAudio2);
         Ischemicdone = true;
         StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
     }
@@ -216,41 +166,18 @@ public class PatientHeartManager : MonoBehaviour
     public void AthleticTrigger1()
     {
         //weak beats, slight discoloration.
-        HeartType("Athletic", AtheleticModel);
-        Athleticdone = true;
+        HeartType(HeartNarration.LabelAthletic, AtheleticModel);
         HideLifestyleChoices();
-        float Delay = 4.5f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Now let’s look at what happens when we care for the heart through regular exercise. ", startTime = Delay },
-            new SubtitleLine { text = "Notice how this heart is a little bigger and glowing brightly, pumping with strength and efficiency. ", startTime = Delay + 5f },
-            new SubtitleLine { text = "This is sometimes called an athletic heart. Unlike a hypertensive heart that grows stiff from pressure", startTime = Delay + 11f },
-            new SubtitleLine { text = "an athletic heart grows stronger and more efficient. ", startTime = Delay + 14f},
-            new SubtitleLine { text = "Go ahead  reach out and touch the athletic heart to feel the difference yourself.", startTime = Delay + 20f }
-        };
-        audioSource.clip = AthleticAudio1;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.AthleticIntro, AthleticAudio1);
         currentFunction = AthleticTrigger2;
     }
 
     public void AthleticTrigger2()
     {
         currentFunction = null;
+        Athleticdone = true; // set here, like Hyperdone/Ischemicdone - only once the heart is actually touched
         HideLifestyleChoices();
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "Do you feel that? Stronger, but still smooth and steady.  ", startTime = Delay },
-            new SubtitleLine { text = "That’s the mark of a well-trained, healthy heart.  ", startTime = Delay + 3.5f },
-            new SubtitleLine { text = "Regular exercise helps the heart pump more efficiently, lowers blood pressure, improves circulation, and protects against heart disease. ", startTime = Delay +11f },
-            new SubtitleLine { text = "Just 30 minutes of activity a day can make a lifetime of difference.  ", startTime = Delay + 16f},
-            new SubtitleLine { text = "Now let's try another lifestyle choice, shall we?", startTime = Delay + 18f }
-
-        };
-        audioSource.clip = AthleticAudio2;
-        audioSource.Play();
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        Narrate(HeartNarration.AthleticTouch, AthleticAudio2);
         StartCoroutine(WaitForAudioToFinish(ShowLifestylechoices));
     }
 
@@ -258,21 +185,63 @@ public class PatientHeartManager : MonoBehaviour
 
     private void AllDone()
     {
-        HeartType("Press esc to return to menu", Recap_GameObject);
-        audioSource.clip = Completed;
-        audioSource.Play();
-        float Delay = 4f;
-        SubtitleLine[] lines = new SubtitleLine[]
-        {
-            new SubtitleLine { text = "You’ve now discovered how lifestyle choices can weaken or strengthen the heart.  ", startTime = Delay },
-            new SubtitleLine { text = "From here on, you’re free to explore. Touch each heart again, compare how they feel,  ", startTime = Delay +4f },
-            new SubtitleLine { text = "and reflect on the choices that lead to them. ", startTime = Delay +7f },
-            new SubtitleLine { text = "Remember the heart you take care of today is the one that carries you into tomorrow.", startTime = Delay + 10f}
-        };
-        subtitleHelper.PlaySubtitles(audioSource, lines);
+        HeartType(HeartNarration.LabelRecap, Recap_GameObject);
+        Narrate(HeartNarration.Completed, Completed);
         Recap_GameObject.SetActive(true);
-    }    
+    }
     #region Helper
+
+    /// <summary>
+    /// Plays a narration segment in the active language: the Mandarin pack supplies
+    /// the clip and the retimed subtitles, and anything it does not translate falls
+    /// back to <paramref name="englishClip"/> and the English script.
+    /// </summary>
+    private void Narrate(string key, AudioClip englishClip)
+    {
+        AudioClip clip = englishClip;
+        SubtitleLine[] lines = HeartNarration.EnglishLines(key);
+        LocalizationManager.ResolveNarration(key, ref clip, ref lines);
+
+        currentNarrationKey = key;
+
+        audioSource.clip = clip;
+        audioSource.Play();
+        subtitleHelper.PlaySubtitles(audioSource, lines);
+    }
+
+    /// <summary>English clip wired up in the inspector for a narration key.</summary>
+    private AudioClip EnglishClipFor(string key)
+    {
+        switch (key)
+        {
+            case HeartNarration.NormalIntro: return NormalAudio1;
+            case HeartNarration.NormalTouch: return NormalAudio2;
+            case HeartNarration.HypertensiveIntro: return HypertensiveAudio1;
+            case HeartNarration.HypertensiveTouch: return HypertensiveAudio2;
+            case HeartNarration.IschemicIntro: return IschemicAudio1;
+            case HeartNarration.IschemicTouch: return IschemicAudio2;
+            case HeartNarration.AthleticIntro: return AthleticAudio1;
+            case HeartNarration.AthleticTouch: return AthleticAudio2;
+            case HeartNarration.Completed: return Completed;
+            case HeartNarration.Sad: return Sad;
+            default: return null;
+        }
+    }
+
+    private void HandleLanguageChanged(GameLanguage language)
+    {
+        // Re-localise the heading without touching which heart is visible.
+        if (HeartTypeText != null && !string.IsNullOrEmpty(currentHeartLabelEnglish))
+        {
+            HeartTypeText.text = LocalizationManager.Text(HeartNarration.LabelKey(currentHeartLabelEnglish), currentHeartLabelEnglish);
+            ApplyHeartLabelFont();
+        }
+
+        // A half-finished English voice over cannot be resumed in Mandarin, so
+        // restart the current segment in the new language.
+        if (replayNarrationOnLanguageChange && !string.IsNullOrEmpty(currentNarrationKey))
+            Narrate(currentNarrationKey, EnglishClipFor(currentNarrationKey));
+    }
 
     private IEnumerator WaitForAudioToFinish(Action onFinished)
     {
@@ -296,7 +265,7 @@ public class PatientHeartManager : MonoBehaviour
         NormalHeatModel.SetActive(false);
         IschemicModel.SetActive(false);
         AtheleticModel.SetActive(false);
-        HeartTypeText.text = HeartCondition;
+        HeartName(HeartCondition);
         HeartSelected.SetActive(true);
     }
     private void ShowLifestylechoices()
@@ -337,9 +306,33 @@ public class PatientHeartManager : MonoBehaviour
             child.SetActive(false);
         }
     }
+    /// <summary>
+    /// Sets the heading. The English string doubles as the localisation key
+    /// (e.g. "Normal" -> "label.normal"), so inspector-wired calls keep working.
+    /// </summary>
     public void HeartName(string HeartName)
     {
-        HeartTypeText.text = HeartName;
+        currentHeartLabelEnglish = HeartName;
+        HeartTypeText.text = LocalizationManager.Text(HeartNarration.LabelKey(HeartName), HeartName);
+        ApplyHeartLabelFont();
+    }
+
+    /// <summary>
+    /// This heading is written straight from code rather than through a
+    /// LocalizedTMPText, so it needs the language font applied by hand -
+    /// otherwise the Chinese renders as empty boxes in the default Latin font.
+    /// </summary>
+    private void ApplyHeartLabelFont()
+    {
+        if (HeartTypeText == null)
+            return;
+
+        TMP_FontAsset font = LocalizationManager.CurrentFont;
+        if (font == null)
+            font = heartLabelDefaultFont;
+
+        if (font != null)
+            HeartTypeText.font = font;
     }
     #endregion
 }
